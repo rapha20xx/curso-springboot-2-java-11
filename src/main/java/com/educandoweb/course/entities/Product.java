@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -16,22 +19,23 @@ import javax.persistence.Transient;
 @Table(name = "table_product")
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String name;
 	private String description;
 	private Double price;
 	private String imgUrl;
-	
-	//Instanciando a classe category na classe product utilizando o Set, para nao criar um conjunto nulo e sim vazio.
-	@Transient
+
+	@ManyToMany
+	@JoinTable(name = "table_product_category",joinColumns = @JoinColumn(name = "product_id"),
+	inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
-	
+
 	public Product() {
-	
+
 	}
 
 	public Product(Long id, String name, String description, Double price, String imgUrl) {
@@ -82,11 +86,10 @@ public class Product implements Serializable {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	
+
 	public Set<Category> getCategories() {
 		return categories;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -104,7 +107,5 @@ public class Product implements Serializable {
 		Product other = (Product) obj;
 		return id == other.id;
 	}
-
-
 
 }
