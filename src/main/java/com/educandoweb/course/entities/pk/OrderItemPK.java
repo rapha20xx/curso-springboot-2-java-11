@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Embeddable //Anotation para classe que sera chave primária
 public class OrderItemPK  implements Serializable {
@@ -26,9 +27,12 @@ public class OrderItemPK  implements Serializable {
 	public Order getOrder() {
 		return order;
 	}
+	
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+	
+	
 	public Product getProduct() {
 		return product;
 	}
