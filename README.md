@@ -1,7 +1,7 @@
 # Sistema de Pedidos V1
 
 # Sobre o projeto
-Sistema de pedidos com back-end desenvolvido com Spring Boot e banco de dados PostgreSQL.
+Sistema de registro de pedidos com back-end desenvolvido com Spring Boot e banco de dados PostgreSQL.
 
 Todos os conceitos e desenvolvimento do algoritimo foram utilizados conforme o curso na plataforma Udemy, Java COMPLETO Programação Orientada a Objetos +Projetos, ministrado por @acenelio
 
